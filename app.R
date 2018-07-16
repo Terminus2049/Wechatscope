@@ -19,14 +19,14 @@ ui <- function(input, output, session){
 # Define server logic to display and download selected file ----
 server <- function(input, output, session) {
   
-  wechat = read_csv("ceninfo.csv")
-  wechat$archive = createLink(wechat$archive, wechat$archive)
-  
-  we = reactive({wechat})
+  wechat = reactiveFileReader(10000, session, 'ceninfo.csv', read_csv)
   
   output$table1 <- DT::renderDataTable({
+    we = wechat()
     
-    DT::datatable(we()[, c(2,4,5:9)], escape = FALSE)
+    we$archive = createLink(we$archive, we$archive)
+    
+    DT::datatable(we[, c(2,4,5:9)], escape = FALSE)
   })
   
 }
