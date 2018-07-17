@@ -36,7 +36,7 @@ server <- function(input, output, session) {
   
   output$table1 <- DT::renderDataTable({
     
-    we = unique(wechat()[,1:8])
+    we = wechat()
     
     if (input$msg != "All") {
       we <- we[we$censored_msg == input$msg,]
@@ -44,7 +44,7 @@ server <- function(input, output, session) {
     
     we$archive = createLink(we$archive, we$archive)
     
-    DT::datatable(we[, c(2,4,5:8)], escape = FALSE,
+    DT::datatable(we, escape = FALSE,
                   options = list(order = list(3, 'desc')))
   })
   

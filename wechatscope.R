@@ -24,11 +24,11 @@ tryCatch({
   # ceninfo.csv 记录的最早日期是 2018.07.06，并每天追加
   
   wechat = fread("ceninfo.csv")
-  wechat = unique(rbind(wechat, ceninfo_content))
+  wechat = unique.data.frame(rbind(wechat, ceninfo_content[, c(2, 4:8)]))
   write.csv(wechat, 'ceninfo.csv', row.names = F)
-  
   },
   
   error = function(e){
     cat("ERROR :",conditionMessage(e), "\n")
   })
+
