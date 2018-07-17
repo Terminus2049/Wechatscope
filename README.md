@@ -14,6 +14,20 @@ git clone https://github.com/Terminus2049/Wechatscope.git
 crontab -e
 ```
 
-复制 `0 2 * * * cd ~/Wechatscope && R CMD BATCH wechatscope.R` 到最后一行。
+复制 `* */1 * * * cd ~/Wechatscope && R CMD BATCH wechatscope.R` 到最后一行。程序会每小时运行一次。
 
-## 在线查看
+## 可视化
+
+在 R 语言环境中 `shiny::runApp()`
+
+## 在线部署并自动更新
+
+在 Linux 服务器上安装 [shiny-server](https://github.com/rstudio/shiny-server)
+
+```bash
+cd /srv/shiny-server/
+git clone https://github.com/Terminus2049/Wechatscope.git
+crontab -e
+```
+
+复制 `* */1 * * * cd /srv/shiny-server/Wechatscope/  && R CMD BATCH wechatscope.R` 到定时任务中。
