@@ -16,15 +16,22 @@ ui <- function(input, output, session){
   
   navbarPage(
     title = 'Wechatscope',
-    tabPanel('Since 2018-07-06'),
-    fluidRow(
-      column(4,
-             selectInput("msg",
-                         "censored_msg",
-                         c("All", we_ui))
-      )
-    ),
-      DT::dataTableOutput("table1")
+    tabPanel('Since 2018-07-06',
+             fluidRow(
+               column(4,
+                      selectInput("msg",
+                                  "censored_msg",
+                                  c("All", we_ui))
+               )
+             ),
+             DT::dataTableOutput("table1")
+             ),
+    
+    tabPanel('Account',
+               DT::dataTableOutput("table2")
+             ),
+    
+    tabPanel('Download', downloadButton("downloadData", "Download"))
     )
 }
 
@@ -47,6 +54,19 @@ server <- function(input, output, session) {
     DT::datatable(we, escape = FALSE,
                   options = list(order = list(3, 'desc')))
   })
+  
+  output$table2 <- DT::renderDataTable({
+    
+    DT::datatable(unique(wechat()[,2]), options = list(paging = FALSE))
+  })
+  
+  
+  output$downloadData <- downloadHandler(
+    filename = "wechatscope.csv",
+    content = function(file) {
+      write.csv(wechat(), file, row.names = FALSE)
+    }
+  )
   
 }
 
