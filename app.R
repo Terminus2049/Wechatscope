@@ -28,7 +28,8 @@ ui <- function(input, output, session){
              ),
     
     tabPanel('Account',
-               DT::dataTableOutput("table2")
+             includeHTML("form.html"),
+             DT::dataTableOutput("table2")
              ),
     
     tabPanel('Download', downloadButton("downloadData", "Download"))
