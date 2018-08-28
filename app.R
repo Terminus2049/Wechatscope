@@ -53,7 +53,7 @@ server <- function(input, output, session) {
     we$archive = createLink(we$archive, we$archive)
     
     DT::datatable(we, escape = FALSE,
-                  options = list(order = list(3, 'desc')))
+                  options = list(order = list(5, 'desc')))
   })
   
   output$table2 <- DT::renderDataTable({
