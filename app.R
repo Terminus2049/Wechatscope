@@ -40,7 +40,7 @@ ui <- function(input, output, session){
 # Define server logic to display and download selected file ----
 server <- function(input, output, session) {
   
-  wechat = reactiveFileReader(10000, session, 'ceninfo.csv', read_csv)
+  wechat = reactiveFileReader(60000, session, 'ceninfo.csv', read_csv)
   
   output$table1 <- DT::renderDataTable({
     
