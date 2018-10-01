@@ -39,7 +39,7 @@ git clone https://github.com/Terminus2049/Wechatscope.git
 
 复制 `* */1 * * * cd /srv/shiny-server/Wechatscope/  && R CMD BATCH wechatscope.R` 到定时任务中。
 
-然后就可以在 http://<ip>:3838/Wechatscope/ 查看。
+然后就可以在 `http://<ip>:3838/Wechatscope/` 查看。
 
 ### 注意
 
