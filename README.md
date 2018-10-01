@@ -16,7 +16,7 @@ crontab -e
 
 `wechatscope.R` 负责抓取最近三天的数据并合并到数据库内。可开启定时任务：
 
-复制 `* */1 * * * cd ~/Wechatscope && R CMD BATCH wechatscope.R` 到最后一行。程序会每小时运行一次。
+复制 `0 */1 * * * cd ~/Wechatscope && R CMD BATCH wechatscope.R` 到最后一行。程序会每小时运行一次。
 
 ## 表格化
 
@@ -37,7 +37,7 @@ git clone https://github.com/Terminus2049/Wechatscope.git
 
 ```crontab -e```
 
-复制 `* */1 * * * cd /srv/shiny-server/Wechatscope/  && R CMD BATCH wechatscope.R` 到定时任务中。
+复制 `0 */1 * * * cd /srv/shiny-server/Wechatscope/  && R CMD BATCH wechatscope.R` 到定时任务中。
 
 然后就可以在 `http://<ip>:3838/Wechatscope/` 查看。
 
