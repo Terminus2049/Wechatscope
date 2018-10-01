@@ -43,7 +43,7 @@ git clone https://github.com/Terminus2049/Wechatscope.git
 
 ### 注意
 
-1. 请安装合适的 R 版本，如果你的服务器内存仅 1G，请不要安装 R 3.5，应安装 R 3.4。安装教程：[UBUNTU PACKAGES FOR R](https://cran.rstudio.com/bin/linux/ubuntu/README.html)
+1. 请安装合适的 R 版本，不要使用默认的 R 版本，但也不要安装最新的 R 3.5，应安装 R 3.4。安装教程：[UBUNTU PACKAGES FOR R](https://cran.rstudio.com/bin/linux/ubuntu/README.html)
 
 2. 下载并安装 [shiny-server](https://www.rstudio.com/products/shiny/download-server/)
 
