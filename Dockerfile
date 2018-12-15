@@ -9,7 +9,7 @@ RUN R -e "install.packages(c('shiny', 'readr', 'DT', 'httr', 'data.table'), repo
 RUN rm -rf /srv/shiny-server/*
  
  
-# Copy the source code of the app from my hard drive to the container (in this case we use the app "wordcloud" from http://shiny.rstudio.com/gallery/word-cloud.html)
+# Copy the source code of the app to the container 
 COPY . /srv/shiny-server/
  
  
