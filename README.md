@@ -48,3 +48,14 @@ git clone https://github.com/Terminus2049/Wechatscope.git
 2. 下载并安装 [shiny-server](https://www.rstudio.com/products/shiny/download-server/)
 
 3. 需要安装 R 包 `readr`、`shiny`、`httr`、`DT` 和 `data.table`，如果内存过小，会编译失败，可通过 [此教程](https://github.com/tidyverse/readr/issues/544#issuecomment-264647581) 处理。
+
+## Docker 安装
+
+```
+docker pull terminus2049/terminus-shiny
+docker run --rm -p 4000:3838 \
+    -v /srv/shinylog/:/var/log/shiny-server/ \
+    terminus2049/terminus-shiny
+```
+
+然后就可以在 `http://<ip>:4000` 查看。
