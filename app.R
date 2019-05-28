@@ -2,10 +2,14 @@
 library(shiny)
 library(readr)
 
-createLink <- function(link, val) {
-  l = paste0('<a href="http://wechatscope.jmsc.hku.hk:8000/html?fn=', link, 
+createLink <- function(link) {
+  paste0('<a href="http://wechatscope.jmsc.hku.hk:8000/html?fn=', link,
              '" target="_blank" class="btn btn-primary">查看全文</a>')
-  sprintf(l,val)
+}
+
+createLink2 <- function(link, val) {
+  paste0('<a href="http://206.189.252.32:8081/', link, ".html",
+             '" target="_blank" class="btn btn-primary">', val, '</a>')
 }
 
 we_ui= c("此内容因违规无法查看", "此内容被投诉且经审核涉嫌侵权，无法查看。",
@@ -49,8 +53,9 @@ server <- function(input, output, session) {
     if (input$msg != "All") {
       we <- we[we$censored_msg == input$msg,]
     }
-    
-    we$archive = createLink(we$archive, we$archive)
+
+    we$nickname = createLink2(we$archive, we$nickname)    
+    we$archive = createLink(we$archive)
     
     DT::datatable(we, escape = FALSE,
                   options = list(
