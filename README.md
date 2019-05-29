@@ -54,5 +54,5 @@ git clone https://github.com/Terminus2049/Wechatscope.git
 安装 rust，编译后：
 
 ```
-./target/release/wechat_scope_dl < ../../shiny-server/Wechatscope/ceninfo.csv
+./target/release/wechat_scope_dl < ceninfo.csv
 ```
