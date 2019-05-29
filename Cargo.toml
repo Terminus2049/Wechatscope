@@ -1,0 +1,12 @@
+[package]
+name = "wechat_scope_api"
+version = "0.1.0"
+authors = ["TerminusBot <terminus2049@protonmail.com>"]
+edition = "2018"
+
+[dependencies]
+reqwest = "0.9.17"
+serde = "1"
+serde_derive = "1"
+csv = "1"
+rustc-serialize = "0.3"
