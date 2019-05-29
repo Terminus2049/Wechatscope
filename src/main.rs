@@ -33,7 +33,7 @@ fn main() -> Result<(), Box<Error>> {
     let mut rdr = csv::Reader::from_reader(io::stdin());
     for result in rdr.deserialize() {
         let record: Wechat = result?;
-        archive.insert(record.archive + ".html");
+        archive.insert(record.archive);
     }
 
     println!("已经积累 {:?} 条记录", archive.len());
@@ -62,13 +62,16 @@ fn main() -> Result<(), Box<Error>> {
         .build()?;
 
     let mut count = 0;
+
     for i in archive {
-        if !downloaded.contains(&i) {
+        let j = i.clone() + ".html";
+        if !downloaded.contains(&j) {
             count += 1;
             println!("{} {:?}", count, i);
-            let url = "https://wechatscope.jmsc.hku.hk/api/html?fn=".to_owned() + &i;
+            let url = "http://wechatscope.jmsc.hku.hk:8000/html?fn=".to_owned() + &i;
+            println!("{:?}", url);
             let mut response = client.get(&url).send()?;
-            let mut dest = File::create("./data/".to_owned() + &i)?;
+            let mut dest = File::create("./data/".to_owned() + &i + ".html")?;
             io::copy(&mut response, &mut dest)?;
             thread::sleep(time::Duration::from_secs(3));
         }
