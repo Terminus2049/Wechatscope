@@ -1,5 +1,5 @@
 [package]
-name = "wechat_scope_api"
+name = "wechat_scope_dl"
 version = "0.1.0"
 authors = ["TerminusBot <terminus2049@protonmail.com>"]
 edition = "2018"
